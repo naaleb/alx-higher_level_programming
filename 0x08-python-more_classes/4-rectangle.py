@@ -1,16 +1,16 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class."""
+"""Defination of a Rectangle class."""
 
 
 class Rectangle:
-    """ Declaration of a rectangle."""
+    """Declaration of a rectangle."""
 
     def __init__(self, width=0, height=0):
         """Initialization of a new Rectangle.
 
         Args:
-            width (int): Width of the new rectangle.
-            height (int): Height of the new rectangle.
+            width (int): Width of a new rectangle.
+            height (int): Height of a new rectangle.
         """
         self.width = width
         self.height = height
@@ -42,11 +42,32 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Returns the area of a Rectangle."""
+        """Return area of a Rectangle."""
         return (self.__width * self.__height)
 
     def perimeter(self):
-        """Returns the perimeter of a Rectangle."""
+        """Return perimeter of a Rectangle."""
         if self.__width == 0 or self.__height == 0:
             return (0)
         return ((self.__width * 2) + (self.__height * 2))
+
+    def __str__(self):
+        """Return a diagram representing a Rectangle.
+
+        Represents the rectangle diagram with # character.
+        """
+        if self.__width == 0 or self.__height == 0:
+            return ("")
+
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return ("".join(rect))
+
+    def __repr__(self):
+        """Return the string represents a Rectangle."""
+        rect = "Rectangle(" + str(self.__width)
+        rect += ", " + str(self.__height) + ")"
+        return (rect)
